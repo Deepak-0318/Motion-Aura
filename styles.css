@@ -29,8 +29,7 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(34, 34, 34, 0.95);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(0.5px);
     z-index: 1000;
     padding: 1rem 0;
     transition: all 0.3s ease;
@@ -46,18 +45,18 @@ body {
 }
 
 .logo {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: bold;
     color: var(--white);
     text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.4rem;
 }
 
 .logo::before {
     content: '🎬';
-    font-size: 2rem;
+    font-size: 1.6rem;
 }
 
 .nav-links {
@@ -125,7 +124,7 @@ body {
 }
 
 .hero h1 {
-    font-size: clamp(3rem, 8vw, 6rem);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
     font-weight: bold;
     margin-bottom: 1rem;
     opacity: 0;
@@ -303,11 +302,68 @@ body {
     background: linear-gradient(135deg, #111111 0%, #1a1a1a 100%);
 }
 
+/* Portfolio Navigation */
+.portfolio-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.portfolio-tab {
+    background: var(--secondary-dark);
+    border: 2px solid #333333;
+    color: var(--text-light);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    min-width: 180px;
+    justify-content: center;
+}
+
+.portfolio-tab:hover {
+    border-color: var(--tertiary-mint);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(29, 205, 159, 0.2);
+}
+
+.portfolio-tab.active {
+    background: var(--tertiary-mint);
+    border-color: var(--tertiary-mint);
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.tab-icon {
+    font-size: 1.2rem;
+}
+
+.tab-text {
+    font-size: 1rem;
+}
+
+/* Portfolio Content */
+.portfolio-content {
+    display: none;
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.portfolio-content.active {
+    display: block;
+}
+
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2rem;
-    margin-top: 4rem;
+    margin-top: 2rem;
 }
 
 .portfolio-item {
@@ -508,8 +564,82 @@ body {
     background: none;
     border: none;
     color: var(--white);
-    font-size: 1.5rem;
     cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    z-index: 1001;
+}
+
+.hamburger-line {
+    width: 25px;
+    height: 3px;
+    background-color: var(--white);
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+.mobile-menu-btn.active .hamburger-line:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.mobile-menu-btn.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-btn.active .hamburger-line:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 45%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 999;
+    padding-top: 80px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.mobile-menu.active {
+    transform: translateX(0);
+}
+
+.mobile-nav-links {
+    list-style: none;
+    padding: 2rem;
+    margin: 0;
+}
+
+.mobile-nav-links li {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.mobile-nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 500;
+    display: block;
+    padding: 1rem;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.mobile-nav-links a:hover {
+    background: var(--tertiary-mint);
+    color: var(--text-dark);
+    transform: scale(1.05);
 }
 
 /* Animations */
@@ -530,22 +660,59 @@ body {
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+    
+    .services-grid,
+    .portfolio-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
 @media (max-width: 768px) {
     .nav-links {
         display: none;
     }
 
     .mobile-menu-btn {
+        display: flex;
+    }
+
+    .mobile-menu {
         display: block;
     }
 
     .hero h1 {
-        font-size: 3rem;
+        font-size: clamp(2rem, 6vw, 3rem);
+    }
+    
+    .hero .subtitle {
+        font-size: clamp(1rem, 4vw, 1.5rem);
+    }
+    
+    .hero .description {
+        font-size: 1rem;
+        margin-bottom: 2rem;
     }
 
     .cta-buttons {
         flex-direction: column;
         align-items: center;
+        gap: 1rem;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
     }
 
     .about-content {
@@ -554,12 +721,14 @@ body {
     }
 
     .about-stats {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
     }
 
     .services-grid,
     .portfolio-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 
     .container {
@@ -568,7 +737,148 @@ body {
 
     .contact-form {
         margin: 0 1rem;
-        padding: 2rem;
+        padding: 2rem 1.5rem;
+    }
+
+    .portfolio-nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+    }
+
+    .portfolio-tab {
+        min-width: 200px;
+        width: 100%;
+        max-width: 280px;
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .section-title {
+        font-size: clamp(2rem, 6vw, 3rem);
+    }
+    
+    .section-subtitle {
+        font-size: 1.1rem;
+        padding: 0 1rem;
+    }
+    
+    .service-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .portfolio-item {
+        margin-bottom: 1rem;
+    }
+    
+    .stat-item {
+        padding: 1rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-container {
+        padding: 0 1rem;
+    }
+    
+    .hero {
+        padding: 0 1rem;
+    }
+    
+    .hero h1 {
+        font-size: clamp(1.8rem, 8vw, 2.5rem);
+    }
+    
+    .hero .subtitle {
+        font-size: clamp(0.9rem, 5vw, 1.2rem);
+    }
+    
+    .hero .description {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+    
+    .btn {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+    }
+    
+    .services-grid {
+        gap: 1rem;
+    }
+    
+    .service-card {
+        padding: 1.5rem 1rem;
+    }
+    
+    .service-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .portfolio-tab {
+        padding: 0.7rem 1rem;
+        font-size: 0.85rem;
+        min-width: auto;
+    }
+    
+    .tab-icon {
+        font-size: 1rem;
+    }
+    
+    .portfolio-grid {
+        gap: 1rem;
+    }
+    
+    .portfolio-placeholder {
+        height: 200px;
+        font-size: 1rem;
+    }
+    
+    .portfolio-info {
+        padding: 1rem;
+    }
+    
+    .portfolio-info h3 {
+        font-size: 1.1rem;
+    }
+    
+    .portfolio-info p {
+        font-size: 0.9rem;
+    }
+    
+    .about-stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .contact-form {
+        padding: 1.5rem 1rem;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+    
+    .mobile-nav-links a {
+        font-size: 1.3rem;
+        padding: 0.8rem;
+    }
+    
+    .floating-element {
+        width: 40px;
+        height: 40px;
     }
 }
 

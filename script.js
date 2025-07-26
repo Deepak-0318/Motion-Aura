@@ -17,14 +17,76 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Mobile menu toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
     
-    if (mobileMenuBtn && navLinks) {
+    if (mobileMenuBtn && mobileMenu) {
         mobileMenuBtn.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
             this.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            if (mobileMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Close mobile menu when clicking on links
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenuBtn.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // Close mobile menu when clicking outside
+        mobileMenu.addEventListener('click', function(e) {
+            if (e.target === this) {
+                mobileMenuBtn.classList.remove('active');
+                this.classList.remove('active');
+                document.body.style.overflow = '';
+            }
         });
     }
+
+    // Portfolio Tab Functionality
+    const portfolioTabs = document.querySelectorAll('.portfolio-tab');
+    const portfolioContents = document.querySelectorAll('.portfolio-content');
+
+    portfolioTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            const targetCategory = this.getAttribute('data-category');
+            
+            // Remove active class from all tabs and contents
+            portfolioTabs.forEach(t => t.classList.remove('active'));
+            portfolioContents.forEach(c => c.classList.remove('active'));
+            
+            // Add active class to clicked tab
+            this.classList.add('active');
+            
+            // Show corresponding content
+            const targetContent = document.getElementById(targetCategory);
+            if (targetContent) {
+                targetContent.classList.add('active');
+                
+                // Re-trigger fade-in animations for portfolio items
+                const portfolioItems = targetContent.querySelectorAll('.portfolio-item');
+                portfolioItems.forEach((item, index) => {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(30px)';
+                    
+                    setTimeout(() => {
+                        item.style.transition = 'all 0.6s ease';
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, index * 100);
+                });
+            }
+        });
+    });
 
     // Fade in animation on scroll
     const observerOptions = {
@@ -173,6 +235,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Portfolio tab hover effects
+    portfolioTabs.forEach(tab => {
+        tab.addEventListener('mouseenter', function() {
+            if (!this.classList.contains('active')) {
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 5px 15px rgba(29, 205, 159, 0.2)';
+            }
+        });
+        
+        tab.addEventListener('mouseleave', function() {
+            if (!this.classList.contains('active')) {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = 'none';
+            }
+        });
+    });
+
     // Notification system
     function showNotification(message, type = 'info') {
         const notification = document.createElement('div');
@@ -214,9 +293,29 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             // Close mobile menu if open
-            if (navLinks && navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
+            if (mobileMenu && mobileMenu.classList.contains('active')) {
+                mobileMenu.classList.remove('active');
                 mobileMenuBtn.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+        
+        // Portfolio tab navigation with arrow keys
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+            const activeTab = document.querySelector('.portfolio-tab.active');
+            if (activeTab) {
+                const tabs = Array.from(portfolioTabs);
+                const currentIndex = tabs.indexOf(activeTab);
+                
+                let nextIndex;
+                if (e.key === 'ArrowLeft') {
+                    nextIndex = currentIndex > 0 ? currentIndex - 1 : tabs.length - 1;
+                } else {
+                    nextIndex = currentIndex < tabs.length - 1 ? currentIndex + 1 : 0;
+                }
+                
+                tabs[nextIndex].click();
+                tabs[nextIndex].focus();
             }
         }
     });
@@ -240,6 +339,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 10);
 
     window.addEventListener('scroll', debouncedScrollHandler);
+
+    // Initialize portfolio with first tab active
+    const firstTab = document.querySelector('.portfolio-tab');
+    if (firstTab && !document.querySelector('.portfolio-tab.active')) {
+        firstTab.click();
+    }
 });
 
 // CSS keyframes for floating animation (to be added to CSS)
