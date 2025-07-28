@@ -893,3 +893,14 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
+
+.footer-links a i {
+    margin-right: 6px;
+}
+
+@media (max-width: 480px) {
+    .footer-links {
+        flex-direction: column;
+        align-items: center;
+    }
+}
