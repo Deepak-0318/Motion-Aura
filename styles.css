@@ -9,31 +9,40 @@ body {
     line-height: 1.6;
     color: #ffffff;
     overflow-x: hidden;
-    background: #000000;
+   background: var(--gradient-1);
+
 }
 
 /* Dark Color Palette Variables */
 :root {
     --primary-black: #000000;
     --secondary-dark: #222222;
-    --tertiary-mint: #1DCD9F;
-    --accent-green: #169976;
+    --tertiary-mint: #30c3e4;     /* From color palette */
+    --accent-green: #ea7d2b;      /* Warm accent orange */
     --white: #ffffff;
     --light-gray: #333333;
     --text-dark: #000000;
     --text-light: rgba(255, 255, 255, 0.9);
+
+    /* Custom Gradient Colors */
+    --gradient-1: linear-gradient(90deg, #832a8b, #30c3e4);
+    --gradient-2: linear-gradient(90deg, #ea7d2b, #832a8b);
+    --gradient-3: linear-gradient(90deg, #59509b, #30c3e4);
+    --gradient-4: linear-gradient(90deg, #4961a4, #4861a9);
 }
+
 
 /* Navigation */
 .navbar {
     position: fixed;
     top: 0;
     width: 100%;
-    backdrop-filter: blur(0.5px);
+    background: rgba(0, 0, 0, 0.95); /* Solid dark background */
     z-index: 1000;
     padding: 1rem 0;
     transition: all 0.3s ease;
 }
+
 
 .nav-container {
     max-width: 1200px;
@@ -43,6 +52,12 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+.logo-img {
+    height: 70px;
+    width: 150px;
+    object-fit: contain;
+}
+
 
 .logo {
     font-size: 1.5rem;
@@ -54,10 +69,7 @@ body {
     gap: 0.4rem;
 }
 
-.logo::before {
-    content: '🎬';
-    font-size: 1.6rem;
-}
+
 
 .nav-links {
     display: flex;
