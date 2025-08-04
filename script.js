@@ -362,3 +362,60 @@ if (!document.querySelector('#floating-styles')) {
     style.textContent = floatingCSS;
     document.head.appendChild(style);
 }
+
+// Logo animation then reveal main website
+window.addEventListener('DOMContentLoaded', function () {
+    const logoIntro = document.getElementById('logoIntro');
+    const logoVideo = document.getElementById('logoVideo');
+
+    if (logoVideo) {
+        logoVideo.onended = () => {
+            logoIntro.classList.add('hide');
+        };
+
+        // Fallback in case the video doesn't fire onended
+        setTimeout(() => {
+            logoIntro.classList.add('hide');
+        }, 6000); // 6 seconds fallback
+    }
+});
+
+window.addEventListener('DOMContentLoaded', function () {
+    const logoIntro = document.getElementById('logoIntro');
+    const logoVideo = document.getElementById('logoVideo');
+    const mainWebsite = document.getElementById('mainWebsite');
+
+    function showWebsite() {
+        logoIntro.classList.add('hide');
+        setTimeout(() => {
+            logoIntro.style.display = 'none';
+            mainWebsite.style.opacity = '1';
+        }, 1000);
+    }
+
+    if (logoVideo) {
+        logoVideo.onended = showWebsite;
+        setTimeout(showWebsite, 6000); // fallback if video doesn't end
+    } else {
+        mainWebsite.style.opacity = '1';
+    }
+});
+
+window.addEventListener('DOMContentLoaded', function () {
+    const promoVideo = document.getElementById('promoVideo');
+    const heroContent = document.querySelector('.hero-content');
+
+    function revealHeroText() {
+        heroContent.style.opacity = '1';
+    }
+
+    if (promoVideo) {
+        promoVideo.onended = revealHeroText;
+
+        // Fallback if video never ends or fails
+        setTimeout(revealHeroText, 8000);
+    } else {
+        revealHeroText();
+    }
+});
+
