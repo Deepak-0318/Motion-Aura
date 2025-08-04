@@ -1,75 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Motion Aura - Digital Marketing Company</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motion Aura - Digital Marketing Company</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 <body>
 
-  <!-- Logo Animation Intro -->
-  <div id="logoIntro">
-    <video 
-      src="https://raw.githubusercontent.com/Deepak-0318/Motion-Aura/main/Logo%20Animation.mp4" 
-      autoplay muted playsinline id="logoVideo">
-    </video>
-  </div>
+         <!-- Logo Animation Intro -->
+            <div id="logoIntro" style="position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: black; z-index: 9999;">
+            <video src="logo-animation.mp4" autoplay muted playsinline id="logoVideo" style="width: 100%; height: 100%; object-fit: cover;"></video>
+            </div>
 
-  <!-- Main Website Content -->
-  <div id="mainWebsite">
+    <div id="mainWebsite" style="opacity: 0; transition: opacity 1s;">
+
+
     <!-- Navigation -->
     <nav class="navbar">
-      <div class="nav-container">
-        <a href="#" class="logo">
-          <img src="https://raw.githubusercontent.com/Deepak-0318/Motion-Aura/main/MotionAura_logo_3@2x.png" alt="Motion Aura Logo" class="logo-img" />
-        </a>
-        <ul class="nav-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-        </button>
-      </div>
-      <div class="mobile-menu">
-        <ul class="mobile-nav-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
+        <div class="nav-container">
+            <a href="#" class="logo">
+    <img src="MotionAura_logo_3@2x.png" alt="Motion Aura Logo" class="logo-img">
+</a>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+        <div class="mobile-menu">
+            <ul class="mobile-nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-      <video autoplay muted playsinline id="promoVideo" class="hero-background-video">
-        <source src="https://raw.githubusercontent.com/Deepak-0318/Motion-Aura/main/PROMO_Video_2.mp4" type="video/mp4" />
-      </video>
-      <div id="heroFallbackBg" class="hero-fallback-bg"></div>
-      <div class="floating-element"></div>
-      <div class="floating-element"></div>
-      <div class="floating-element"></div>
+        <!-- Promo Background Video -->
+            <video autoplay muted loop playsinline id="promoVideo" class="hero-background-video">
+              <source src="promo-video.mp4" type="video/mp4">
+            </video>
 
-      <div class="hero-content">
-        <h1>Motion Aura</h1>
-        <p class="subtitle">Digital Marketing Company</p>
-        <p class="description">
-          Transform your vision into captivating visual stories. We craft premium video content that resonates with your audience and elevates your brand to new heights.
-        </p>
-        <div class="cta-buttons">
-          <a href="#portfolio" class="btn btn-primary">View Our Work</a>
-          <a href="#contact" class="btn btn-secondary">Start Your Project</a>
+        <div id="heroFallbackBg" class="hero-fallback-bg"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        
+        <div class="hero-content">
+            <h1>Motion Aura</h1>
+            <p class="subtitle">Digital Marketing Company</p>
+            <p class="description">Transform your vision into captivating visual stories. We craft premium video content that resonates with your audience and elevates your brand to new heights.</p>
+            <div class="cta-buttons">
+                <a href="#portfolio" class="btn btn-primary">View Our Work</a>
+                <a href="#contact" class="btn btn-secondary">Start Your Project</a>
+            </div>
         </div>
-      </div>
     </section>
 
     <!-- Services Section -->
