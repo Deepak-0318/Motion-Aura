@@ -107,28 +107,58 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 
-    // Contact form handling
-    const contactForm = document.getElementById('contactForm');
-    
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const formObject = {};
-            
-            formData.forEach((value, key) => {
-                formObject[key] = value;
+    // Contact form handlingv   
+  
+(function () {
+    emailjs.init("Rju8K0Mn7w8q9fZsD");
+})();
+
+const contactForm = document.getElementById("contactForm");
+
+if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const formData = {
+            name: this.name.value,
+            email: this.email.value,
+            project: this.project.value,
+            budget: this.budget.value,
+            message: this.message.value,
+        };
+
+        // ADMIN EMAIL
+        emailjs
+            .send(
+                "PASTE_SERVICE_ID_HERE",
+                "template_fuhj7nu",   
+                formData
+            )
+            .then(() => {
+                // CLIENT AUTO-REPLY
+                return emailjs.send(
+                    "PASTE_SERVICE_ID_HERE",
+                    "template_yf7gt5c",
+                    formData
+                );
+            })
+            .then(() => {
+                showNotification(
+                    "Thank you! Your request has been sent successfully.",
+                    "success"
+                );
+                contactForm.reset();
+            })
+            .catch((error) => {
+                console.error("EmailJS Error:", error);
+                showNotification(
+                    "Something went wrong. Please try again later.",
+                    "error"
+                );
             });
-            
-            // Show success message (you can replace this with actual form submission)
-            showNotification('Thank you for your message! We\'ll get back to you soon.', 'success');
-            
-            // Reset form
-            this.reset();
-        });
-    }
+    });
+}
+
 
     // Animated counter for stats
     function animateCounters() {
