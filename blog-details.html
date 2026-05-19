@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Blog Details</title>
+
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: #050816;
+            color: white;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: auto;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            width: 100%;
+            padding: 25px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(5, 8, 22, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #9b5cff, #ff4fa3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #c770f0;
+        }
+
+        .nav-btn {
+            padding: 14px 26px;
+            border-radius: 12px;
+            border: none;
+            background: linear-gradient(90deg, #9b5cff, #ff4fa3);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* BLOG DETAILS */
+
+        .blog-details {
+            padding: 60px 0 100px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 45px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            color: #c770f0;
+        }
+
+        .blog-banner img {
+            width: 100%;
+            border-radius: 20px;
+            margin-bottom: 40px;
+        }
+
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .blog-category {
+            background: linear-gradient(90deg, #9b5cff, #ff4fa3);
+            padding: 7px 16px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .meta-item {
+            color: #c5c5d8;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 17px;
+        }
+
+        .blog-title {
+            font-size: 54px;
+            line-height: 1.1;
+            margin-bottom: 45px;
+
+            background: linear-gradient(90deg, #9b5cff, #ff4fa3, #8f7cff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* AUTHOR */
+
+        .author-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+
+            margin-bottom: 45px;
+        }
+
+        .author-box {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .author-box img {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-box h3 {
+            font-size: 28px;
+            margin-bottom: 6px;
+        }
+
+        .author-box p {
+            color: #b8b8d0;
+            font-size: 18px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            width: 54px;
+            height: 54px;
+            border: 1px solid #7c3aed;
+            border-radius: 14px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 20px;
+        }
+
+        .social-icons a:hover {
+            background: linear-gradient(90deg, #9b5cff, #ff4fa3);
+            border-color: transparent;
+        }
+
+        .divider {
+            width: 100%;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.08);
+            margin-bottom: 55px;
+        }
+
+        /* BLOG CONTENT */
+
+        .blog-content {
+            max-width: 1200px;
+        }
+
+        .blog-content p {
+            font-size: 16px;
+            line-height: 2;
+            color: white;
+            margin-bottom: 25px;
+        }
+
+        .blog-content h2 {
+            color: #9b5cff;
+            font-size: 28px;
+            margin-top: 45px;
+            margin-bottom: 20px;
+        }
+
+        .blog-content ul {
+            padding-left: 35px;
+            margin-bottom: 40px;
+        }
+
+        .blog-content li {
+            font-size: 16px;
+            line-height: 2;
+            margin-bottom: 12px;
+        }
+
+        .blog-content strong {
+            color: white;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width:992px) {
+
+            .blog-title {
+                font-size: 55px;
+            }
+
+            .blog-content h2 {
+                font-size: 42px;
+            }
+
+            .blog-content p,
+            .blog-content li {
+                font-size: 20px;
+            }
+        }
+
+        @media(max-width:768px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .blog-title {
+                font-size: 42px;
+            }
+
+            .blog-content h2 {
+                font-size: 34px;
+            }
+
+            .blog-content p,
+            .blog-content li {
+                font-size: 18px;
+            }
+
+            .author-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .social-icons {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+        <div class="container nav-content">
+
+            <div class="logo">
+                MotionAura
+            </div>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#">About</a>
+                <a href="#">Services</a>
+                <a href="blog.html">Blog</a>
+                <a href="#">Testimonials</a>
+                <a href="#">Team</a>
+            </div>
+
+            <button class="nav-btn">
+                Book a Call
+            </button>
+
+        </div>
+    </nav>
+
+    <!-- BLOG DETAILS -->
+
+    <section class="blog-details">
+
+        <div class="container">
+
+            <!-- BACK BUTTON -->
+
+            <a href="blog.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                Back to Blog
+            </a>
+
+            <!-- IMAGE -->
+
+            <div class="blog-banner">
+                <img src="images/blog1.jpg" alt="Blog Image">
+            </div>
+
+            <!-- META -->
+
+            <div class="blog-meta">
+
+                <span class="blog-category">
+                    Technology
+                </span>
+
+                <span class="meta-item">
+                    <i class="far fa-calendar"></i>
+                    April 15, 2026
+                </span>
+
+                <span class="meta-item">
+                    <i class="far fa-clock"></i>
+                    5 min read
+                </span>
+
+            </div>
+
+            <!-- TITLE -->
+
+            <h1 class="blog-title">
+                The Future of Web Development in 2026
+            </h1>
+
+            <!-- AUTHOR -->
+
+            <div class="author-section">
+
+                <div class="author-box">
+
+                    <img src="images/team1.jpg" alt="Author">
+
+                    <div>
+                        <h3>Michael Chen</h3>
+                        <p>Chief Technology Officer</p>
+                    </div>
+
+                </div>
+
+                <!-- SOCIAL -->
+
+                <div class="social-icons">
+
+                    <a href="#">
+                        <i class="far fa-bookmark"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="fas fa-share-alt"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- BLOG CONTENT -->
+
+            <div class="blog-content">
+
+                <p>
+                    The landscape of web development is evolving at an unprecedented pace.
+                    As we navigate through 2026, several transformative trends are reshaping
+                    how we build, deploy, and maintain web applications.
+                </p>
+
+                <h2>AI-Powered Development Tools</h2>
+
+                <p>
+                    Artificial Intelligence has become an integral part of the development
+                    workflow. From intelligent code completion to automated testing and
+                    bug detection, AI tools are enhancing developer productivity and code quality.
+                </p>
+
+                <p>
+                    Modern IDEs now feature AI assistants that can suggest entire code blocks,
+                    refactor legacy code, and even generate comprehensive documentation.
+                    This shift allows developers to focus more on solving complex problems
+                    rather than writing boilerplate code.
+                </p>
+
+                <h2>The Rise of Edge Computing</h2>
+
+                <p>
+                    Edge computing is revolutionizing how we think about application architecture.
+                    By processing data closer to the user, applications can achieve significantly
+                    lower latency and improved performance.
+                </p>
+
+                <p>
+                    Platforms like Cloudflare Workers, Vercel Edge Functions, and AWS Lambda@Edge
+                    are making it easier than ever to deploy code at the edge.
+                    This distributed approach is particularly beneficial for global applications
+                    serving users across different geographical regions.
+                </p>
+
+                <h2>Web Assembly Maturity</h2>
+
+                <p>
+                    WebAssembly (Wasm) has matured into a production-ready technology.
+                    It's no longer just about running high-performance games in the browser—
+                    Wasm is being used for everything from video editing to complex data processing applications.
+                </p>
+
+                <p>
+                    Languages like Rust, Go, and C++ can now compile to Wasm,
+                    enabling developers to leverage their existing codebases and
+                    bring desktop-class performance to web applications.
+                </p>
+
+                <h2>Advanced Framework Features</h2>
+
+                <p>
+                    Modern frameworks like React, Vue, and Svelte continue to evolve
+                    with new features that simplify common development patterns:
+                </p>
+
+                <ul>
+
+                    <li>
+                        <strong>Server Components:</strong>
+                        Enabling better performance through selective hydration
+                    </li>
+
+                    <li>
+                        <strong>Improved State Management:</strong>
+                        Built-in solutions reducing the need for external libraries
+                    </li>
+
+                    <li>
+                        <strong>Enhanced Developer Experience:</strong>
+                        Better error messages, debugging tools, and documentation
+                    </li>
+
+                    <li>
+                        <strong>Optimized Build Systems:</strong>
+                        Faster builds and smaller bundle sizes
+                    </li>
+
+                </ul>
+
+                <h2>The Importance of Web Vitals</h2>
+
+                <p>
+                    Core Web Vitals have become crucial metrics for both user experience and SEO.
+                    Google's emphasis on these metrics means developers must prioritize:
+                </p>
+
+                <ul>
+                    <li>Largest Contentful Paint (LCP)</li>
+                    <li>First Input Delay (FID)</li>
+                    <li>Cumulative Layout Shift (CLS)</li>
+                    <li>Interaction to Next Paint (INP)</li>
+                </ul>
+
+                <p>
+                    Tools and frameworks are adapting to make it easier to achieve excellent
+                    Web Vitals scores, with built-in optimization features and performance monitoring.
+                </p>
+
+                <h2>Security-First Approach</h2>
+
+                <p>
+                    With increasing cyber threats, security has become a primary concern in web development.
+                    Modern applications implement:
+                </p>
+
+                <ul>
+
+                    <li>Zero-trust architecture</li>
+                    <li>End-to-end encryption</li>
+                    <li>Advanced authentication methods (WebAuthn, passkeys)</li>
+                    <li>Content Security Policies (CSP)</li>
+                    <li>Regular security audits and automated vulnerability scanning</li>
+
+                </ul>
+
+                <h2>Sustainability in Web Development</h2>
+
+                <p>
+                    Environmental consciousness is influencing how we build websites.
+                    Developers are increasingly considering the carbon footprint of their applications through:
+                </p>
+
+                <ul>
+
+                    <li>Efficient code that requires less processing power</li>
+                    <li>Optimized images and assets</li>
+                    <li>Green hosting providers</li>
+                    <li>Reduced data transfer through better caching strategies</li>
+
+                </ul>
+
+                <h2>Looking Ahead</h2>
+
+                <p>
+                    The future of web development is exciting and full of possibilities.
+                    As technologies continue to evolve, developers must stay adaptable
+                    and committed to continuous learning.
+                </p>
+
+                <p>
+                    The key to success in this rapidly changing landscape is to focus
+                    on fundamentals while staying informed about emerging trends.
+                    Whether you're building a simple website or a complex web application,
+                    the principles of good design, clean code, and user-centric development remain timeless.
+                </p>
+
+                <p>
+                    What trends are you most excited about?
+                    How are you adapting your development practices for the future?
+                    Share your thoughts and experiences with us!
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</body>
+
+</html>
