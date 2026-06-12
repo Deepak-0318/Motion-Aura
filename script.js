@@ -8,20 +8,47 @@
     const logoVideo = document.getElementById('logoVideo');
     const mainWebsite = document.getElementById('mainWebsite');
 
+    const introPlayed = sessionStorage.getItem('introPlayed');
+
     function showWebsite() {
         if (!logoIntro) return;
+
         logoIntro.classList.add('hide');
+
         setTimeout(() => {
             logoIntro.style.display = 'none';
-            if (mainWebsite) mainWebsite.style.opacity = '1';
+
+            if (mainWebsite) {
+                mainWebsite.style.opacity = '1';
+            }
+
+            sessionStorage.setItem('introPlayed', 'true');
         }, 1000);
     }
 
+    // Skip intro if already played in this session
+    if (introPlayed) {
+        if (logoIntro) {
+            logoIntro.style.display = 'none';
+        }
+
+        if (mainWebsite) {
+            mainWebsite.style.opacity = '1';
+        }
+
+        return;
+    }
+
+    // First visit → play intro normally
     if (logoVideo) {
         logoVideo.addEventListener('ended', showWebsite);
-        setTimeout(showWebsite, 6000); // fallback
+        setTimeout(showWebsite, 6000);
     } else {
-        if (mainWebsite) mainWebsite.style.opacity = '1';
+        if (mainWebsite) {
+            mainWebsite.style.opacity = '1';
+        }
+
+        sessionStorage.setItem('introPlayed', 'true');
     }
 })();
 
