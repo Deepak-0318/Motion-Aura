@@ -1155,7 +1155,12 @@ img { max-width: 100%; display: block; }
     border: 3px solid #8d5cf6;
     object-fit: cover;
 }
-
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
 .team-card h3 {
     font-size: 1.4rem;
     margin-bottom: 0.6rem;
