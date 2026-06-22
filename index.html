@@ -28,8 +28,6 @@
 
 <body>
     <!-- Logo Animation Intro -->
-
-    <script src='https://www.noupe.com/embed/019eeb95456476c0ad39cee2d36e80a197b3.js'></script>
     <div id="logoIntro">
         <video src="logo-animation.mp4" autoplay muted playsinline id="logoVideo"></video>
     </div>
@@ -755,13 +753,21 @@
                     <span class="popup-status"><span class="popup-status-dot"></span> Online — reply in minutes</span>
                 </div>
             </div>
-            <div class="chat-popup-body">
-                <div class="popup-bubble">Hey! 👋 Ready to elevate your brand?</div>
-                <div class="popup-bubble">Tell us about your project and we'll get back to you shortly!</div>
+            <div class="chat-popup-body" id="chatMessages">
+
+                <div class="message bot-message">
+                    Hi 👋 Welcome to MotionAura!
+                </div>
+
+                <div class="message bot-message">
+                    How can I help you today?
+                </div>
+
             </div>
+
             <div class="chat-popup-input">
-                <input type="text" class="popup-input-field" placeholder="Type a message...">
-                <button class="popup-send-btn"><i class="fas fa-paper-plane"></i></button>
+                <input type="text" id="chatInput" class="popup-input-field" placeholder="Ask about our services...">
+                <button id="sendBtn" class="popup-send-btn"><i class="fas fa-paper-plane"></i></button>
             </div>
         </div>
         <button class="chat-fab-btn" id="chatFabBtn" aria-label="Open chat">
@@ -772,6 +778,8 @@
     </div>
 
     <script src="script.js"></script>
+    <link rel="stylesheet" href="chatbot/chatbot.css">
+    <script src="chatbot/chatbot.js"></script>
 </body>
 
 </html>

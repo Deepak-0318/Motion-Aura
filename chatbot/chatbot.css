@@ -1,0 +1,29 @@
+.message {
+    max-width: 85%;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    border-radius: 14px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.bot-message {
+    background: #f3f4f6;
+    color: #111827;
+    align-self: flex-start;
+}
+
+.user-message {
+    background: #2563eb;
+    color: white;
+    margin-left: auto;
+}
+
+#chatMessages {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow-y: auto;
+    max-height: 320px;
+    padding: 15px;
+}
