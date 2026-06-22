@@ -30,7 +30,14 @@ function addBotMessage(text) {
     div.className =
         "message bot-message";
 
-    div.textContent = text;
+    // Convert markdown bold to HTML bold
+    const formattedText = text
+        .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+        .replace(/\n/g, "<br>");
+
+    div.innerHTML = formattedText;
+
+    div.style.whiteSpace = "normal";
 
     chatMessages.appendChild(div);
 
@@ -43,10 +50,14 @@ function scrollToBottom() {
         chatMessages.scrollHeight;
 }
 
-function handleMessage() {
+async function handleMessage() {
+
+    console.log("handleMessage triggered");
 
     const message =
         chatInput.value.trim();
+
+    console.log("Message:", message);
 
     if (!message) return;
 
@@ -54,13 +65,49 @@ function handleMessage() {
 
     chatInput.value = "";
 
-    setTimeout(() => {
+    const typingMessage =
+        document.createElement("div");
 
-        addBotMessage(
-            "Thanks! Groq integration coming next."
+    typingMessage.className =
+        "message bot-message";
+
+    typingMessage.textContent =
+        "Typing...";
+
+    chatMessages.appendChild(
+        typingMessage
+    );
+
+    try {
+
+        console.log("Calling Groq...");
+
+        const reply =
+            await askGroq(message);
+
+        console.log(
+            "Groq Reply:",
+            reply
         );
 
-    }, 500);
+        typingMessage.remove();
+
+        addBotMessage(reply);
+
+    }
+    catch(error) {
+
+        console.error(
+            "Groq Error:",
+            error
+        );
+
+        typingMessage.remove();
+
+        addBotMessage(
+            "Sorry, something went wrong."
+        );
+    }
 }
 
 sendBtn.addEventListener(
@@ -109,7 +156,7 @@ function extractWebsiteContent() {
 
 function buildChatContext() {
 
-    const websiteContent =
+    const WEBSITE_CONTENT =
         extractWebsiteContent();
 
     return {
@@ -120,7 +167,7 @@ function buildChatContext() {
         services:
             MotionAuraKnowledge.services,
 
-        websiteContent
+        websiteContent: WEBSITE_CONTENT
 
     };
 }

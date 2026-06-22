@@ -408,7 +408,8 @@ img { max-width: 100%; display: block; }
     position: absolute;
     bottom: 72px;
     right: 0;
-    width: 300px;
+    width: 380px;
+    height: 550px;
     background: #12122a;
     border: 1px solid rgba(131,42,139,0.35);
     border-radius: 18px;
@@ -1847,5 +1848,12 @@ OUR WORK
         flex-direction: column;
         align-items: flex-start;
         gap: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .chat-popup {
+        width: 92vw;
+        height: 70vh;
     }
 }

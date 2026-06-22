@@ -208,42 +208,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        // Send message on popup
-        const popupSend = chatPopup.querySelector('.popup-send-btn');
-        const popupInput = chatPopup.querySelector('.popup-input-field');
-        const popupBody = chatPopup.querySelector('.chat-popup-body');
-
-        function sendPopupMsg() {
-            const val = popupInput.value.trim();
-            if (!val) return;
-            const userBubble = document.createElement('div');
-            userBubble.style.cssText = `
-                background: rgba(48,195,228,0.15);
-                border: 1px solid rgba(48,195,228,0.25);
-                border-radius: 12px; border-bottom-right-radius: 3px;
-                padding: 0.65rem 0.9rem; font-size: 0.83rem; line-height: 1.5;
-                color: rgba(255,255,255,0.85); align-self: flex-end;
-                max-width: 85%; margin-left: auto;
-            `;
-            userBubble.textContent = val;
-            popupBody.appendChild(userBubble);
-            popupInput.value = '';
-            popupBody.scrollTop = popupBody.scrollHeight;
-            setTimeout(() => {
-                const reply = document.createElement('div');
-                reply.className = 'popup-bubble';
-                reply.textContent = 'Thanks! We\'ll reach out to you shortly. 🚀';
-                popupBody.appendChild(reply);
-                popupBody.scrollTop = popupBody.scrollHeight;
-            }, 1000);
-        }
-
-        if (popupSend) popupSend.addEventListener('click', sendPopupMsg);
-        if (popupInput) {
-            popupInput.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter') sendPopupMsg();
-            });
-        }
 
         // Close popup on outside click
         document.addEventListener('click', (e) => {
