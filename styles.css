@@ -652,18 +652,90 @@ OUR WORK
     background:linear-gradient(90deg,#6c63ff,#ff4fd8);
 }
 
-.portfolio-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-    max-width:1100px;
-    margin:auto;
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1200px;
+    margin: 40px auto 0;
 }
 
-.portfolio-card{
-    height:220px;
-    background:#d9d9d9;
-    border-radius:12px;
+@media (max-width: 1024px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.portfolio-card {
+    position: relative;
+    height: 320px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.portfolio-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.portfolio-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--purple-light);
+    box-shadow: 0 20px 40px rgba(131, 42, 139, 0.2);
+}
+
+.portfolio-card:hover img {
+    transform: scale(1.08);
+}
+
+.portfolio-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10, 10, 18, 0.9) 10%, rgba(10, 10, 18, 0.2) 100%);
+    opacity: 0;
+    display: flex;
+    align-items: flex-end;
+    padding: 24px;
+    transition: opacity 0.4s ease;
+}
+
+.portfolio-card:hover .portfolio-overlay {
+    opacity: 1;
+}
+
+.portfolio-info h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+    transform: translateY(10px);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.portfolio-info p {
+    font-size: 0.9rem;
+    color: var(--cyan);
+    font-weight: 500;
+    transform: translateY(10px);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) 0.05s;
+}
+
+.portfolio-card:hover .portfolio-info h3,
+.portfolio-card:hover .portfolio-info p {
+    transform: translateY(0);
 }
 
 .process-section{
@@ -2242,4 +2314,94 @@ OUR WORK
 
 .empty-state .view-all-btn:hover {
     transform: translateY(-2px);
+}
+
+/* Project Description Box */
+.project-description-box {
+    max-width: 800px;
+    margin: 20px auto 40px;
+    padding: 24px 30px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.project-description-box p {
+    color: var(--text-light);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* Lightbox Modal */
+.lightbox-modal {
+    position: fixed;
+    z-index: 99999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(10, 10, 18, 0.95);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox-modal.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lightbox-content-wrapper {
+    position: relative;
+    max-width: 90%;
+    max-height: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lightbox-img {
+    max-width: 100%;
+    max-height: 75vh;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.lightbox-modal.show .lightbox-img {
+    transform: scale(1);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    color: var(--white);
+    font-size: 48px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: color var(--transition);
+}
+
+.lightbox-close:hover {
+    color: var(--cyan);
+}
+
+.lightbox-caption {
+    margin-top: 20px;
+    color: var(--text-light);
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: center;
 }
