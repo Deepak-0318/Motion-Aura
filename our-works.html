@@ -93,24 +93,30 @@
 
         <div class="portfolio-grid">
 
-            <div class="portfolio-card"></div>
+            <div class="portfolio-card" data-category="Brand Strategy & Identity"></div>
 
-            <div class="portfolio-card"></div>
+            <div class="portfolio-card" data-category="Motion Design & Animation"></div>
 
-            <div class="portfolio-card"></div>
+            <div class="portfolio-card" data-category="UI/UX Design"></div>
 
-            <div class="portfolio-card"></div>
+            <div class="portfolio-card" data-category="Web Design & Development"></div>
 
-            <div class="portfolio-card"></div>
+            <div class="portfolio-card" data-category="Video Production & Editing"></div>
 
-            <div class="portfolio-card"></div>
+            <div class="portfolio-card" data-category="SEO & Digital Growth"></div>
 
-            <div class="portfolio-card"></div>
+            <div class="portfolio-card" data-category="Brand Strategy & Identity"></div>
 
-            <div class="portfolio-card"></div>
+            <div class="portfolio-card" data-category="Motion Design & Animation"></div>
 
-            <div class="portfolio-card"></div>
+            <div class="portfolio-card" data-category="UI/UX Design"></div>
 
+        </div>
+
+        <!-- Empty State Container -->
+        <div id="empty-state" class="empty-state" style="display: none;">
+            <p>Projects for this category are coming soon.</p>
+            <button id="view-all-btn" class="view-all-btn">View All Projects</button>
         </div>
 
     </section>
@@ -240,6 +246,120 @@
 
     </section>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const buttons = document.querySelectorAll('.filter-buttons button');
+            const cards = document.querySelectorAll('.portfolio-card');
+
+            // Category mappings between URL parameter slug and actual filter text
+            const categoryMap = {
+                'branding': 'Brand Strategy & Identity',
+                'motion-design': 'Motion Design & Animation',
+                'ui-ux': 'UI/UX Design',
+                'web-design': 'Web Design & Development',
+                'video-production': 'Video Production & Editing',
+                'seo': 'SEO & Digital Growth',
+                'all': 'All'
+            };
+
+            // Reverse mapping for updating URLs
+            const slugMap = {
+                'brand strategy & identity': 'branding',
+                'motion design & animation': 'motion-design',
+                'ui/ux design': 'ui-ux',
+                'web design & development': 'web-design',
+                'video production & editing': 'video-production',
+                'seo & digital growth': 'seo',
+                'all': 'all'
+            };
+
+            // Function to filter cards by category
+            function filterCategory(categoryName, updateUrl = true) {
+                let matchFound = false;
+
+                // Normalize name and check if button exists
+                buttons.forEach(btn => {
+                    if (btn.textContent.trim().toLowerCase() === categoryName.toLowerCase()) {
+                        btn.classList.add('active');
+                        matchFound = true;
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+
+                // Default to 'All' if the category is invalid or not found
+                if (!matchFound) {
+                    categoryName = 'All';
+                    buttons.forEach(btn => {
+                        if (btn.textContent.trim().toLowerCase() === 'all') {
+                            btn.classList.add('active');
+                        }
+                    });
+                }
+
+                // Filter cards and count visible ones
+                let visibleCount = 0;
+                cards.forEach(card => {
+                    const cardCategory = card.getAttribute('data-category');
+                    if (categoryName.toLowerCase() === 'all' || (cardCategory && cardCategory.toLowerCase() === categoryName.toLowerCase())) {
+                        card.style.display = '';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Show/hide empty state
+                const emptyState = document.getElementById('empty-state');
+                const grid = document.querySelector('.portfolio-grid');
+                if (visibleCount === 0) {
+                    grid.style.display = 'none';
+                    if (emptyState) emptyState.style.display = 'block';
+                } else {
+                    grid.style.display = 'grid';
+                    if (emptyState) emptyState.style.display = 'none';
+                }
+
+                // Update browser URL query parameter and push history state
+                if (updateUrl) {
+                    const slug = slugMap[categoryName.toLowerCase()] || 'all';
+                    const newUrl = `${window.location.pathname}?category=${slug}`;
+                    history.pushState({ category: slug }, '', newUrl);
+                }
+            }
+
+            // Click event for filter buttons
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const category = button.textContent.trim();
+                    filterCategory(category);
+                });
+            });
+
+            // View all button in the empty state
+            const viewAllBtn = document.getElementById('view-all-btn');
+            if (viewAllBtn) {
+                viewAllBtn.addEventListener('click', () => {
+                    filterCategory('All');
+                });
+            }
+
+            // Handle browser back/forward buttons
+            window.addEventListener('popstate', (event) => {
+                const categoryParam = event.state?.category || new URLSearchParams(window.location.search).get('category') || 'all';
+                const filterName = categoryMap[categoryParam.toLowerCase()] || 'All';
+                filterCategory(filterName, false);
+            });
+
+            // Handle category passed from homepage
+            const params = new URLSearchParams(window.location.search);
+            const categoryParam = params.get('category');
+            if (categoryParam) {
+                const filterName = categoryMap[categoryParam.toLowerCase()] || 'All';
+                filterCategory(filterName, false);
+            }
+        });
+    </script>
 </body>
 
 </html>
