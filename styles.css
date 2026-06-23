@@ -1400,7 +1400,9 @@ OUR WORK
 .team-card {
     padding: 2.5rem 2rem;
     text-align: center;
-    flex: 0 0 calc(33.33% - 1.5rem);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
 }
 
 .team-card img {
@@ -1410,23 +1412,21 @@ OUR WORK
     margin: 0 auto 1.4rem;
     border: 3px solid #8d5cf6;
     object-fit: cover;
+    max-width: 100%;
 }
-/* .team-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 3rem;
-}*/
+
 .team-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
+    display: grid;
+    gap: 24px;
     margin-top: 3rem;
 }
+
 .team-card h3 {
     font-size: 1.4rem;
     margin-bottom: 0.6rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
 }
 
 .team-card span {
@@ -1437,11 +1437,17 @@ OUR WORK
     color: #b46cff;
     font-size: 0.85rem;
     margin-bottom: 1.3rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
 }
 
 .team-card p {
     color: var(--text-muted);
     line-height: 1.8;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
 }
 
 /* RESPONSIVE */
@@ -1449,12 +1455,36 @@ OUR WORK
 @media (max-width: 1024px) {
 
     .blog-grid,
-    .testimonial-grid,
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+}
+
+@media (max-width: 768px) {
     .team-grid {
         grid-template-columns: 1fr;
         gap: 24px;
     }
 
+    .team-card {
+        width: 100%;
+        max-width: 100%;
+        padding: 24px 18px; /* Proper horizontal padding (16px–20px) */
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1025px) {
+    .team-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 /* ===========================
    BLOG PAGE

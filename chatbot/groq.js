@@ -1,6 +1,9 @@
 // groq.js
 
-const apiKey = typeof GROQ_API_KEY !== 'undefined' ? GROQ_API_KEY : "";
+import dotenv from 'dotenv';
+dotenv.config();
+
+const GROQ_API_KEY = process.env.GROQ_API_KEY;
 
 function buildSystemPrompt(context) {
 
