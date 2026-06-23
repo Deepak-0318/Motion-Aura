@@ -283,3 +283,157 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 });
+/* ===========================
+   TEAM MEMBER POPUP
+=========================== */
+
+const teamData = {
+
+    hariprasad: {
+        name: "Hariprasad",
+
+        role: "Founder",
+
+        image: "images/team1.jpeg",
+
+        bio: "Passionate entrepreneur and creative leader behind MotionAura. Specializing in video production, motion graphics, and digital storytelling, Hariprasad helps brands transform ideas into compelling visual experiences that drive engagement and growth.",
+
+        linkedin: "https://linkedin.com/",
+
+        email: "hariprasad@gmail.com",
+
+        experience: "3+ Years",
+
+        skills: "Leadership, Branding, Motion Graphics, Storytelling"
+    },
+
+    deepak: {
+        name: "Deepak K S",
+
+        role: "Co-Founder",
+
+        image: "images/team2.jpeg",
+
+        bio: "Passionate Full Stack Developer and AI enthusiast focused on building innovative digital products. Specialized in web development, AI-powered applications, automation solutions, and scalable software systems, helping businesses transform ideas into impactful digital experiences.",
+
+        linkedin: "www.linkedin.com/in/deepak-k-s7",
+
+        email: "deepak.hsn29@gmail.com",
+
+        experience: "2+ Years",
+
+        skills: "Full Stack Development, React.js, JavaScript, Python, AI & Generative AI, FastAPI, UI/UX Development, Database Design, API Development, Automation Solutions"
+    },
+
+    nidhi: {
+        name: "Nidhi S Nayak",
+
+        role: "Developer",
+
+        image: "images/team3.jpg",
+
+        bio: "Aspiring software developer passionate about building innovative and user-friendly digital solutions. Experienced in web development, programming, databases, and AI-assisted technologies, with a strong drive for continuous learning.",
+
+        linkedin: "https://www.linkedin.com/in/nidhi-nayak-14b9523a9/",
+
+        email: "nidhinayak218@gmail.com",
+
+        experience: "B.Tech Student (2nd Year)",
+
+        skills: "Web Development, HTML & CSS, JavaScript, Python, C Programming, React.js, Database Design, AI & Generative AI, Software Development"
+    },
+
+    rohit: {
+        name: "Rohit Singh",
+
+        role: "Content Writer",
+
+        image: "images/team4.webp",
+
+        bio: "Writer turning complex tech into simple, conversion-focused stories. Tech and marketing content that educates and sells. F1 fan, artist, creativity addict.",
+
+        linkedin: "http://www.linkedin.com/in/rohit-singh-70b1341b4",
+
+        email: "singhrohit.rs71@gmail.com",
+
+        experience: "4+ Years",
+
+        skills: "Technical writing, content writing, customer communication and service."
+    },
+
+    pragati: {
+        name: "Pragati Mittal",
+
+        role: "UI/UX Designer",
+
+        image: "images/team5.jpeg",
+
+        bio: "UI/UX Designer focused on designing simple, user-friendly, and impactful digital products.Dedicated to enhancing user experiences through thoughtful design and usability.",
+
+        linkedin: "https://www.linkedin.com/in/pragati-mittal-530112234/",
+
+        email: "pragatimittal2002@gmail.com",
+
+        experience: "2+ Years",
+
+        skills: "UI/UX Design, Wireframing, Prototyping, User Research, Figma, Design Systems"
+    }
+
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const cards = document.querySelectorAll(".team-card");
+
+    const modal = document.getElementById("teamModal");
+
+    const closeBtn = document.querySelector(".close-btn");
+
+    if (!cards.length || !modal || !closeBtn) return;
+
+    cards.forEach(card => {
+
+        card.addEventListener("click", () => {
+
+            const member = teamData[card.dataset.member];
+
+            if (!member) return;
+
+            document.getElementById("modalImage").src = member.image;
+
+            document.getElementById("modalName").innerText = member.name;
+
+            document.getElementById("modalRole").innerText = member.role;
+
+            document.getElementById("modalBio").innerText = member.bio;
+
+            document.getElementById("modalLinkedin").href = member.linkedin;
+
+            document.getElementById("modalEmail").innerText = member.email;
+
+            document.getElementById("modalExperience").innerText = member.experience;
+
+            document.getElementById("modalSkills").innerText = member.skills;
+
+            modal.style.display = "flex";
+        });
+
+    });
+
+    closeBtn.addEventListener("click", () => {
+
+        modal.style.display = "none";
+
+    });
+
+    window.addEventListener("click", (e) => {
+
+        if (e.target === modal) {
+
+            modal.style.display = "none";
+
+        }
+
+    });
+
+});
