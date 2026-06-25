@@ -246,7 +246,7 @@ payment:
 contact:{
 
 email:
-"hello@motionaura.co",
+"motionaura2@gmail.com",
 
 website:
 "https://motionaura.co",
