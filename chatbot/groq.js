@@ -1,94 +1,43 @@
-// groq.js
-
-import dotenv from 'dotenv';
-dotenv.config();
-
-const GROQ_API_KEY = process.env.GROQ_API_KEY;
-
-function buildSystemPrompt(context) {
-
-    return `
-
-You are MotionAura AI Assistant.
-
-Company:
-${context.company}
-
-Services:
-${context.services.join(", ")}
-
-Website Content:
-${context.websiteContent}
-
-Your personality:
-
-- Professional
-- Friendly
-- Helpful
-- Creative
-- Sales-oriented
-
-Rules:
-
-1. Use bullet points when listing services.
-2. Do NOT use markdown symbols like ** or ##.
-3. Keep answers under 120 words.
-4. Use simple HTML-friendly formatting.
-5. Answer only about MotionAura.
-
-`;
-}
+// frontend/groq.js - Dispatches chat queries to the secure serverless backend proxy
 
 async function askGroq(userMessage) {
+    const context = buildChatContext();
 
-    const context =
-        buildChatContext();
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 12000); // 12 seconds request timeout
 
-    const response =
-        await fetch(
-            "https://api.groq.com/openai/v1/chat/completions",
-            {
-                method: "POST",
+    try {
+        const response = await fetch('/api/chat', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                message: userMessage,
+                context: context
+            }),
+            signal: controller.signal
+        });
 
-                headers: {
-                    "Content-Type":
-                        "application/json",
+        clearTimeout(timeoutId);
 
-                    Authorization:
-                        `Bearer ${apiKey}`
-                },
+        if (!response.ok) {
+            const errData = await response.json().catch(() => ({}));
+            console.error("Server API Error details:", errData);
+            throw new Error(`Server API returned status ${response.status}`);
+        }
 
-                body: JSON.stringify({
-
-                    model:
-                        "llama-3.3-70b-versatile",
-
-                    messages: [
-
-                        {
-                            role: "system",
-                            content:
-                                buildSystemPrompt(
-                                    context
-                                )
-                        },
-
-                        {
-                            role: "user",
-                            content:
-                                userMessage
-                        }
-                    ],
-
-                    temperature: 0.4
-                })
-            }
-        );
-
-    const data =
-        await response.json();
-
-    return data.choices[0]
-        .message.content;
+        const data = await response.json();
+        if (data && data.reply) {
+            return data.reply;
+        } else {
+            throw new Error("Invalid response format from serverless API.");
+        }
+    } catch (err) {
+        clearTimeout(timeoutId);
+        if (err.name === 'AbortError') {
+            throw new Error("The request timed out. Please check your internet connection.");
+        }
+        throw err;
+    }
 }
-
