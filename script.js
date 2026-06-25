@@ -223,10 +223,76 @@ document.addEventListener('DOMContentLoaded', function () {
     // ── Contact form ────────────────────────────────────────────
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', function (e) {
+        // Initialize EmailJS
+        emailjs.init({
+            publicKey: "Rju8K0Mn7w8q9fZsD"
+        });
+
+        contactForm.addEventListener('submit', async function (e) {
             e.preventDefault();
-            showNotification('Thank you! We\'ll get back to you soon. 🎉', 'success');
-            this.reset();
+
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalBtnHTML = submitBtn.innerHTML;
+
+            // Loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            const formData = new FormData(contactForm);
+            const from_name = formData.get('name') || '';
+            const reply_to = formData.get('email') || '';
+            const phone = formData.get('phone') || 'N/A';
+            const company = formData.get('company') || 'N/A';
+            const service = formData.get('service') || formData.get('project') || 'N/A';
+            const budget = formData.get('budget') || '';
+            let message = formData.get('message') || '';
+
+            if (budget) {
+                message += `\n\n[Budget Range: ${budget}]`;
+            }
+
+            const templateParams = {
+                from_name,
+                reply_to,
+                phone,
+                company,
+                service,
+                message
+            };
+
+            try {
+                // Email #1: Send Lead notification to MotionAura
+                await emailjs.send('service_1593458', 'template_408cw1f', templateParams);
+                console.log("Lead email sent");
+
+                // Email #2: Send Auto Reply to customer
+                await emailjs.send('service_1593458', 'template_1zc9wfn', templateParams);
+                console.log("Auto reply sent");
+
+                // Success Flow
+                showNotification(
+                    "<strong>Thank you for contacting MotionAura!</strong><br><br>" +
+                    "We've received your enquiry successfully.<br><br>" +
+                    "A confirmation email has been sent to your inbox.<br><br>" +
+                    "Our team will get back to you within 24 hours.",
+                    "success"
+                );
+
+                contactForm.reset();
+            } catch (error) {
+                console.error(error);
+                // Error Flow
+                showNotification(
+                    "<strong>Something went wrong.</strong><br><br>" +
+                    "Please try again later or email us directly at<br><br>" +
+                    "<strong>motionaura2@gmail.com</strong>",
+                    "error"
+                );
+            } finally {
+                // Restore button state
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnHTML;
+            }
         });
     }
 
@@ -248,7 +314,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const n = document.createElement('div');
         n.className = 'ma-notification';
-        n.textContent = message;
+        n.innerHTML = message;
         n.style.cssText = `
             position: fixed;
             top: 80px; right: 20px;
@@ -256,12 +322,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 ? 'linear-gradient(135deg, #832a8b, #30c3e4)'
                 : 'linear-gradient(135deg, #ea7d2b, #832a8b)'};
             color: white;
-            padding: 14px 22px;
+            padding: 18px 24px;
             border-radius: 12px;
             box-shadow: 0 8px 32px rgba(0,0,0,0.35);
             z-index: 99999;
             font-family: Inter, sans-serif;
             font-size: 0.9rem;
+            line-height: 1.4;
             font-weight: 500;
             max-width: 320px;
             transform: translateX(120%);
@@ -274,7 +341,7 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(() => {
             n.style.transform = 'translateX(120%)';
             setTimeout(() => n.remove(), 400);
-        }, 4000);
+        }, 6000);
     }
 
     // ── Stagger service cards on load ───────────────────────────
