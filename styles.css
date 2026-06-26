@@ -1980,12 +1980,17 @@ OUR WORK
     margin-left: 6px;
 }
 
+.all-articles-section{
+    padding: 70px 12%;
+    background: #070712;
+}
+
 .blog-categories{
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     flex-wrap: wrap;
-    margin: 40px 0;
+    margin: 40px 0 60px;
 }
 
 .category-btn{
@@ -2000,42 +2005,9 @@ OUR WORK
     transition: all 0.3s ease;
 }
 
-.category-btn:hover{
-    background: linear-gradient(90deg, #a855f7, #ec4899);
-    border-color: transparent;
-}
-
-.category-btn.active{
-    background: linear-gradient(90deg, #a855f7, #ec4899);
-    border: none;
-}
-.all-articles-section{
-    padding: 70px 12%;
-    background: #070712;
-}
-
-.blog-categories{
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-bottom: 60px;
-}
-
-.category-btn{
-    background: transparent;
-    color: white;
-    border: 1px solid #7c3aed;
-    padding: 8px 18px;
-    border-radius: 12px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
 .category-btn:hover,
 .category-btn.active{
-    background: linear-gradient(90deg,#a855f7,#ec4899);
+    background: linear-gradient(90deg, #a855f7, #ec4899);
     border-color: transparent;
 }
 
@@ -2118,16 +2090,6 @@ OUR WORK
     color: #b3b3c3;
 }
 
-.read-more-btn{
-    color: white;
-    text-decoration: none;
-    font-weight: 700;
-    transition: 0.3s;
-}
-
-.read-more-btn:hover{
-    color: #ec4899;
-}
 /* Mobile responsiveness for Blog page */
 
 @media screen and (max-width: 768px) {

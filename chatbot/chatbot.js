@@ -178,7 +178,7 @@ function getCurrentPageName() {
         'uiux-works.html': 'UI/UX Design Showcase',
         'video-production-works.html': 'Video Production & Editing Showcase',
         'blog.html': 'Latest Articles & Insights Blog',
-        'blog-details.html': 'Blog Article Details',
+        'why-brand-videos-fail.html': 'Blog Article: Why 90% of Brand Videos Fail',
         'contact.html': 'Contact Page (Enquiry Form & Call Booking)'
     };
 
