@@ -799,7 +799,7 @@ OUR WORK
     margin-bottom:40px;
 }
 
-.cta-buttons{
+.cta-section .cta-buttons{
     display:flex;
     justify-content:center;
     gap:20px;
