@@ -283,6 +283,7 @@ img { max-width: 100%; display: block; }
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+    align-items: flex-start;
 }
 
 /* Buttons */
