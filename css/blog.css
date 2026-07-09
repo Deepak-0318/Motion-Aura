@@ -1,1 +1,114 @@
 /* Page-specific styles for blog.html */
+
+/* Standardise Containers & Spacing */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 16px !important;
+    }
+    .featured-section {
+        padding: 40px 0 !important;
+    }
+    .all-articles-section {
+        padding: 40px 16px !important;
+    }
+    .blog-categories {
+        margin: 20px 0 30px !important;
+        gap: 8px !important;
+    }
+    .articles-title {
+        font-size: 28px !important;
+        margin-bottom: 25px !important;
+    }
+    .articles-title span {
+        font-size: 18px !important;
+    }
+}
+
+/* Optimize Grid for Tablets and Mobile */
+@media (max-width: 1024px) {
+    .articles-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 24px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .articles-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+    .article-card img {
+        height: 200px !important;
+    }
+    .article-content {
+        padding: 16px !important;
+    }
+    .article-content h3 {
+        font-size: 20px !important;
+        line-height: 1.3 !important;
+        margin-bottom: 8px !important;
+    }
+    .article-content p {
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+        margin-bottom: 16px !important;
+    }
+}
+
+/* Featured Card Sizing and Alignment */
+@media (max-width: 1024px) {
+    .featured-card > img {
+        height: 320px !important;
+    }
+    .featured-content h3 {
+        font-size: 1.6rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .featured-card > img {
+        height: 220px !important;
+    }
+    .featured-content {
+        padding: 16px !important;
+    }
+    .featured-content h3 {
+        font-size: 1.4rem !important;
+        line-height: 1.3 !important;
+    }
+    .featured-content p {
+        font-size: 0.95rem !important;
+        margin-bottom: 16px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .blog-hero {
+        padding-top: 120px !important;
+        padding-bottom: 60px !important;
+    }
+    .blog-hero-content h1 {
+        font-size: 2.2rem !important;
+    }
+    .blog-hero-content p {
+        font-size: 1rem !important;
+        padding: 0 8px !important;
+        margin-bottom: 1.5rem !important;
+    }
+    .blog-search {
+        height: 50px !important;
+        padding: 0 16px !important;
+    }
+    .featured-author {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 12px !important;
+    }
+    .featured-author .read-more-btn {
+        margin-left: 0 !important;
+        width: 100% !important;
+        text-align: center !important;
+        display: block !important;
+        padding: 10px 0 !important;
+    }
+}
