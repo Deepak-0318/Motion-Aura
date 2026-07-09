@@ -1,0 +1,43 @@
+@import "blog-detail-shared.css";
+
+/* Inline styles converted to classes */
+.article-quote {
+    padding-left: 20px;
+    border-left: 3px solid #9b5cff;
+    font-style: italic;
+    color: #b8b8d0;
+    margin-bottom: 25px;
+}
+.audit-box {
+    background: linear-gradient(135deg, rgba(155, 92, 255, 0.1), rgba(255, 79, 163, 0.1));
+    border: 1px solid rgba(155, 92, 255, 0.2);
+    padding: 30px;
+    border-radius: 15px;
+    margin: 40px 0;
+}
+.audit-title {
+    color: #ff4fa3;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+.audit-desc {
+    margin-bottom: 20px;
+}
+.audit-btn {
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+.deeper-title {
+    margin-top: 30px;
+}
+.call-btn-container {
+    margin-top: 40px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.call-btn {
+    text-decoration: none;
+    padding: 16px 32px;
+    font-size: 18px;
+}

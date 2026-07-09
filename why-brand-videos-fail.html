@@ -14,267 +14,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-
-        body {
-            background: #050816;
-            color: white;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1400px;
-            margin: auto;
-        }
-
-        /* BLOG DETAILS */
-
-        .blog-details {
-            padding: 60px 0 100px;
-        }
-
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: white;
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 45px;
-            transition: 0.3s;
-        }
-
-        .back-btn:hover {
-            color: #c770f0;
-        }
-
-        .blog-banner img {
-            width: 100%;
-            border-radius: 20px;
-            margin-bottom: 40px;
-        }
-
-        .blog-meta {
-            display: flex;
-            align-items: center;
-            gap: 22px;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-        }
-
-        .blog-category {
-            background: linear-gradient(90deg, #9b5cff, #ff4fa3);
-            padding: 7px 16px;
-            border-radius: 30px;
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        .meta-item {
-            color: #c5c5d8;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 17px;
-        }
-
-        .blog-title {
-            font-size: 54px;
-            line-height: 1.1;
-            margin-bottom: 45px;
-
-            background: linear-gradient(90deg, #9b5cff, #ff4fa3, #8f7cff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* AUTHOR */
-
-        .author-section {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 30px;
-
-            margin-bottom: 45px;
-        }
-
-        .author-box {
-            display: flex;
-            align-items: center;
-            gap: 18px;
-        }
-
-        .author-box img {
-            width: 75px;
-            height: 75px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .author-box h3 {
-            font-size: 28px;
-            margin-bottom: 6px;
-        }
-
-        .author-box p {
-            color: #b8b8d0;
-            font-size: 18px;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 15px;
-        }
-
-        .social-icons a {
-            width: 54px;
-            height: 54px;
-            border: 1px solid #7c3aed;
-            border-radius: 14px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            color: white;
-            text-decoration: none;
-            transition: 0.3s;
-            font-size: 20px;
-        }
-
-        .social-icons a:hover {
-            background: linear-gradient(90deg, #9b5cff, #ff4fa3);
-            border-color: transparent;
-        }
-
-        .divider {
-            width: 100%;
-            height: 1px;
-            background: rgba(255, 255, 255, 0.08);
-            margin-bottom: 55px;
-        }
-
-        /* BLOG CONTENT */
-
-        .blog-content {
-            max-width: 1200px;
-        }
-
-        .blog-content p {
-            font-size: 16px;
-            line-height: 2;
-            color: #d1d1f0;
-            margin-bottom: 25px;
-        }
-
-        .blog-content h2 {
-            color: #9b5cff;
-            font-size: 28px;
-            margin-top: 45px;
-            margin-bottom: 20px;
-            background: linear-gradient(90deg, #9b5cff, #ff4fa3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .blog-content h3 {
-            color: white;
-            font-size: 22px;
-            margin-top: 30px;
-            margin-bottom: 15px;
-        }
-
-        .blog-content ul, .blog-content ol {
-            padding-left: 35px;
-            margin-bottom: 40px;
-        }
-
-        .blog-content li {
-            font-size: 16px;
-            line-height: 2;
-            margin-bottom: 12px;
-            color: #d1d1f0;
-        }
-
-        .blog-content strong {
-            color: white;
-        }
-
-        /* IMAGE PLACEHOLDER STYLING */
-        .blog-image-placeholder {
-            width: 100%;
-            height: auto;
-            margin: 35px 0;
-        }
-
-        .blog-image-placeholder img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 20px;
-        }
-
-        /* RESPONSIVE */
-
-        @media(max-width:992px) {
-            .blog-title {
-                font-size: 45px;
-            }
-
-            .blog-content h2 {
-                font-size: 26px;
-            }
-
-            .blog-content h3 {
-                font-size: 20px;
-            }
-
-            .blog-content p,
-            .blog-content li {
-                font-size: 16px;
-            }
-        }
-
-        @media(max-width:768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .blog-title {
-                font-size: 36px;
-            }
-
-            .blog-content h2 {
-                font-size: 22px;
-            }
-
-            .blog-content h3 {
-                font-size: 18px;
-            }
-
-            .author-section {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .social-icons {
-                flex-wrap: wrap;
-            }
-
-        }
-    </style>
+    
+    <link rel="stylesheet" href="css/why-brand-videos-fail.css">
 </head>
 
 <body>
@@ -591,7 +335,7 @@
                     The first 3 seconds decide whether your video lives or dies. A strong hook isn’t random, it follows a structure:
                 </p>
                 
-                <p style="padding-left: 20px; border-left: 3px solid #9b5cff; font-style: italic; color: #b8b8d0; margin-bottom: 25px;">
+                <p class="article-quote">
                     Challenge + Curiosity Gap + Visual Proof
                 </p>
                 
@@ -828,15 +572,15 @@
                     By now, the pattern should be clear. If your videos aren't performing, the problem isn't your budget. It's not your equipment. And it's not your brand. It's the way your content is structured to hold — or lose — attention. Because no matter how good a video looks, it only works if people actually watch it.
                 </p>
 
-                <div style="background: linear-gradient(135deg, rgba(155, 92, 255, 0.1), rgba(255, 79, 163, 0.1)); border: 1px solid rgba(155, 92, 255, 0.2); padding: 30px; border-radius: 15px; margin: 40px 0;">
-                    <h3 style="color: #ff4fa3; margin-top: 0; margin-bottom: 15px;">Get a Free Video Retention Audit</h3>
-                    <p style="margin-bottom: 20px;">
+                <div class="audit-box">
+                    <h3 class="audit-title">Get a Free Video Retention Audit</h3>
+                    <p class="audit-desc">
                         We’ll break down your last video and show you exactly where viewers drop off and what’s causing it. No sales pitch. No generic feedback. Just clear, actionable insights you can use immediately. Delivered within 24 hours.
                     </p>
-                    <a href="index.html#contact" class="nav-btn" style="text-decoration: none; display: inline-block; text-align: center;">Get Free Audit</a>
+                    <a href="index.html#contact" class="nav-btn audit-btn">Get Free Audit</a>
                 </div>
 
-                <h3 style="margin-top: 30px;">Want to Go Deeper?</h3>
+                <h3 class="deeper-title">Want to Go Deeper?</h3>
                 
                 <p>
                     If you’re ready to turn your videos into high-performing assets:
@@ -846,8 +590,8 @@
                     <strong>Book a 20-minute strategy call with the MotionAura team.</strong> We’ll walk you through how to apply high-retention editing to your content and where the biggest opportunities for growth are. Better videos don’t come from better gear. They come from better decisions. And it starts with how you structure attention.
                 </p>
                 
-                <p style="margin-top: 40px; text-align: center; margin-bottom: 40px;">
-                    <a href="index.html#contact" class="nav-btn" style="text-decoration: none; padding: 16px 32px; font-size: 18px;">Book Your Strategy Call</a>
+                <p class="call-btn-container">
+                    <a href="index.html#contact" class="nav-btn call-btn">Book Your Strategy Call</a>
                 </p>
 
             </div>
@@ -856,94 +600,8 @@
 
     </section>
 
-    <script>
-    function shareArticle() {
-        const shareData = {
-            title: document.title,
-            text: 'Check out this article on MotionAura:',
-            url: window.location.href
-        };
-
-        if (navigator.share) {
-            navigator.share(shareData).catch((error) => console.log('Error sharing:', error));
-        } else {
-            navigator.clipboard.writeText(window.location.href).then(() => {
-                showToast('Link copied to clipboard!');
-            }).catch((err) => {
-                showToast('Failed to copy link.');
-            });
-        }
-    }
-
-    function showToast(message) {
-        let toast = document.getElementById('share-toast');
-        if (!toast) {
-            toast = document.createElement('div');
-            toast.id = 'share-toast';
-            toast.style.cssText = `
-                position: fixed;
-                bottom: 30px;
-                right: 30px;
-                background: linear-gradient(90deg, #9b5cff, #ff4fa3);
-                color: white;
-                padding: 12px 24px;
-                border-radius: 8px;
-                font-size: 15px;
-                font-weight: 500;
-                box-shadow: 0 10px 25px rgba(155, 92, 255, 0.4);
-                z-index: 10000;
-                opacity: 0;
-                transform: translateY(20px);
-                transition: all 0.3s ease;
-            `;
-            document.body.appendChild(toast);
-        }
-        toast.textContent = message;
-        
-        // Trigger animation
-        setTimeout(() => {
-            toast.style.opacity = '1';
-            toast.style.transform = 'translateY(0)';
-        }, 10);
-
-        // Hide after 3 seconds
-        setTimeout(() => {
-            toast.style.opacity = '0';
-            toast.style.transform = 'translateY(20px)';
-        }, 3000);
-    }
-
-    function updateBookmarkUI() {
-        const bookmarks = JSON.parse(localStorage.getItem('bookmarked_blogs') || '[]');
-        const isBookmarked = bookmarks.includes('why-brand-videos-fail.html');
-        const icon = document.getElementById('bookmarkIcon');
-        if (icon) {
-            if (isBookmarked) {
-                icon.className = 'fas fa-bookmark';
-                icon.style.color = '#ff4fa3';
-            } else {
-                icon.className = 'far fa-bookmark';
-                icon.style.color = '';
-            }
-        }
-    }
-
-    function toggleBookmark() {
-        let bookmarks = JSON.parse(localStorage.getItem('bookmarked_blogs') || '[]');
-        const index = bookmarks.indexOf('why-brand-videos-fail.html');
-        if (index > -1) {
-            bookmarks.splice(index, 1);
-            showToast('Bookmark removed.');
-        } else {
-            bookmarks.push('why-brand-videos-fail.html');
-            showToast('Article bookmarked!');
-        }
-        localStorage.setItem('bookmarked_blogs', JSON.stringify(bookmarks));
-        updateBookmarkUI();
-    }
-
-    document.addEventListener('DOMContentLoaded', updateBookmarkUI);
-    </script>
+    
+    <script src="js/why-brand-videos-fail.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,247 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: #050816;
+    color: white;
+}
+
+.container {
+    width: 90%;
+    max-width: 1400px;
+    margin: auto;
+}
+
+/* BLOG DETAILS */
+
+.blog-details {
+    padding: 60px 0 100px;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 45px;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    color: #c770f0;
+}
+
+.blog-banner img {
+    width: 100%;
+    border-radius: 20px;
+    margin-bottom: 40px;
+}
+
+.blog-meta {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.blog-category {
+    background: linear-gradient(90deg, #9b5cff, #ff4fa3);
+    padding: 7px 16px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.meta-item {
+    color: #c5c5d8;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 17px;
+}
+
+.blog-title {
+    font-size: 54px;
+    line-height: 1.1;
+    margin-bottom: 45px;
+    background: linear-gradient(90deg, #9b5cff, #ff4fa3, #8f7cff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* AUTHOR */
+
+.author-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 45px;
+}
+
+.author-box {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.author-box img {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.author-box h3 {
+    font-size: 28px;
+    margin-bottom: 6px;
+}
+
+.author-box p {
+    color: #b8b8d0;
+    font-size: 18px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    width: 54px;
+    height: 54px;
+    border: 1px solid #7c3aed;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 20px;
+}
+
+.social-icons a:hover {
+    background: linear-gradient(90deg, #9b5cff, #ff4fa3);
+    border-color: transparent;
+}
+
+.divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    margin-bottom: 55px;
+}
+
+/* BLOG CONTENT */
+
+.blog-content {
+    max-width: 1200px;
+}
+
+.blog-content p {
+    font-size: 16px;
+    line-height: 2;
+    color: #d1d1f0;
+    margin-bottom: 25px;
+}
+
+.blog-content h2 {
+    color: #9b5cff;
+    font-size: 28px;
+    margin-top: 45px;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, #9b5cff, #ff4fa3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.blog-content h3 {
+    color: white;
+    font-size: 22px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.blog-content ul, .blog-content ol {
+    padding-left: 35px;
+    margin-bottom: 40px;
+}
+
+.blog-content li {
+    font-size: 16px;
+    line-height: 2;
+    margin-bottom: 12px;
+    color: #d1d1f0;
+}
+
+.blog-content strong {
+    color: white;
+}
+
+/* IMAGE PLACEHOLDER STYLING */
+.blog-image-placeholder {
+    width: 100%;
+    height: auto;
+    margin: 35px 0;
+}
+
+.blog-image-placeholder img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 20px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:992px) {
+    .blog-title {
+        font-size: 45px;
+    }
+
+    .blog-content h2 {
+        font-size: 26px;
+    }
+
+    .blog-content h3 {
+        font-size: 20px;
+    }
+
+    .blog-content p,
+    .blog-content li {
+        font-size: 16px;
+    }
+}
+
+@media(max-width:768px) {
+    .blog-title {
+        font-size: 36px;
+    }
+
+    .blog-content h2 {
+        font-size: 22px;
+    }
+
+    .blog-content h3 {
+        font-size: 18px;
+    }
+
+    .author-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .social-icons {
+        flex-wrap: wrap;
+    }
+}

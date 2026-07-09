@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brand Strategy & Identity Showcase | MotionAura</title>
     <meta name="description" content="Explore our dedicated portfolio for Brand Strategy & Identity. Premium corporate branding, visual identity guidelines, and design works by MotionAura.">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/branding-works.css">
 </head>
 
 <body>
@@ -272,73 +273,17 @@
         </button>
     </div>
 
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
     <link rel="stylesheet" href="chatbot/chatbot.css">
-    <script src="config.js"></script>
+    <script src="js/config.js"></script>
     <script src="chatbot/knowledge.js"></script>
     <script src="chatbot/groq.js"></script>
     <script src="chatbot/chatbot.js"></script>
 
     <!-- Lightbox Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const modal = document.getElementById('lightboxModal');
-            const closeBtn = document.getElementById('lightboxClose');
-            const lightboxImg = document.getElementById('lightboxImage');
-            const lightboxVid = document.getElementById('lightboxVideo');
-            const caption = document.getElementById('lightboxCaption');
-
-            document.querySelectorAll('.portfolio-card').forEach(card => {
-                card.addEventListener('click', () => {
-                    const type = card.getAttribute('data-type');
-                    const src = card.getAttribute('data-fullsrc');
-                    const capText = card.getAttribute('data-caption');
-
-                    if (type === 'video') {
-                        lightboxImg.style.display = 'none';
-                        lightboxImg.src = '';
-                        lightboxVid.src = src;
-                        lightboxVid.style.display = 'block';
-                        lightboxVid.play().catch(err => console.log("Auto-play blocked", err));
-                    } else {
-                        lightboxVid.style.display = 'none';
-                        lightboxVid.pause();
-                        lightboxVid.src = '';
-                        lightboxImg.src = src;
-                        lightboxImg.style.display = 'block';
-                    }
-                    caption.textContent = capText;
-                    modal.classList.add('show');
-                    document.body.style.overflow = 'hidden';
-                });
-            });
-
-            function closeModal() {
-                modal.classList.remove('show');
-                document.body.style.overflow = '';
-                setTimeout(() => {
-                    lightboxImg.src = '';
-                    lightboxVid.pause();
-                    lightboxVid.src = '';
-                    lightboxImg.style.display = 'none';
-                    lightboxVid.style.display = 'none';
-                }, 300);
-            }
-
-            closeBtn.addEventListener('click', closeModal);
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal || e.target === closeBtn) {
-                    closeModal();
-                }
-            });
-
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && modal.classList.contains('show')) {
-                    closeModal();
-                }
-            });
-        });
-    </script>
+    
+    <script src="js/portfolio-lightbox.js"></script>
+    <script src="js/branding-works.js"></script>
 </body>
 
 </html>
