@@ -4,3 +4,5 @@ images/video-production/ai ads 2f.mp4
 images/video-production/ai ads 3f.mp4
 .vercel
 .env*
+#Documentation
+*.md

@@ -88,7 +88,7 @@ const teamData = {
         role: "Co-Founder",
         image: "images/team2.jpeg",
         bio: "Passionate Full Stack Developer and AI enthusiast focused on building innovative digital products. Specialized in web development, AI-powered applications, automation solutions, and scalable software systems, helping businesses transform ideas into impactful digital experiences.",
-        linkedin: "www.linkedin.com/in/deepak-k-s7",
+        linkedin: "https://www.linkedin.com/in/deepak-k-s7",
         email: "deepak.hsn29@gmail.com",
         experience: "2+ Years",
         skills: "Full Stack Development, React.js, JavaScript, Python, AI & Generative AI, FastAPI, UI/UX Development, Database Design, API Development, Automation Solutions"
