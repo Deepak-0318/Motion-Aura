@@ -2091,6 +2091,34 @@ body {
     }
 }
 @media (max-width: 768px) {
+    .container {
+        padding: 0 16px !important;
+    }
+    .hero-content {
+        padding: 0 16px !important;
+    }
+    .work-section {
+        padding: 60px 16px !important;
+    }
+    .process-section {
+        padding: 60px 16px !important;
+    }
+    .cta-section {
+        padding: 60px 16px !important;
+    }
+    .why-choose-section {
+        padding: 60px 16px !important;
+    }
+    .legal-content {
+        padding: 0 16px !important;
+    }
+    .contact-wrapper {
+        padding: 0 16px !important;
+    }
+    .footer-bottom {
+        padding: 1.5rem 16px !important;
+    }
+
     .nav-links, .nav-cta-btn { display: none; }
     .mobile-menu-btn { display: flex; }
     .mobile-menu { display: block; }
@@ -2118,7 +2146,7 @@ body {
     .footer-top {
         grid-template-columns: 1fr 1fr;
         gap: 2rem;
-        padding: 2.5rem 1.5rem 2rem;
+        padding: 2.5rem 16px 2rem;
     }
     .footer-brand { grid-column: 1 / -1; }
 
@@ -2287,7 +2315,7 @@ body {
 @media (max-width: 480px) {
     .contact-info-panel,
     .contact-form-panel {
-        padding: 2rem 1.5rem;
+        padding: 2rem 16px !important;
     }
 }
 @media (max-width: 1024px) {

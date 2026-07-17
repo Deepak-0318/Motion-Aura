@@ -241,7 +241,8 @@ body {
     }
 
     .container {
-        width: 92% !important;
+        width: 100% !important;
+        padding: 0 16px !important;
     }
 
     .back-btn {
